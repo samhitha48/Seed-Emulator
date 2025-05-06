@@ -29,3 +29,9 @@ project-words.txt
 .venv
 **/.obsidian/**
 test_result.txt
+venv/
+**/venv/
+__pycache__/
+*.py[cod]
+*.dist-info/
+*.egg-info/
