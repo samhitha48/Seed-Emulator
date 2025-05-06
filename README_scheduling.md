@@ -6,7 +6,7 @@ This document outlines the concept and exploration of a topology-aware custom sc
 
 ## Motivation
 
-By default, the Kubernetes scheduler assigns pods to nodes based on resource availability without regard to the intended network topology. However, in simulations that emulate realistic inter-AS routing and communication, physical pod placement can impact performance and complexity—particularly when emulating BGP, OSPF, or VXLAN-based systems using Meshnet.
+By default, the Kubernetes scheduler assigns pods to nodes based on resource availability without regard to the intended network topology. However, in simulations that emulate realistic inter-AS routing and communication, physical pod placement can impact performance and complexity particularly when emulating BGP or VXLAN-based systems using Meshnet.
 
 ## Objectives
 
@@ -18,23 +18,19 @@ By default, the Kubernetes scheduler assigns pods to nodes based on resource ava
 
 ### 1. Node Affinity and Taints
 - **Pros**: Simple and native to Kubernetes.
-- **Cons**: Manual setup required; limited dynamic capability for large or evolving topologies.
+- **Cons**: Manual setup required, limited dynamic capability for large or evolving topologies.
 
 ### 2. Custom Kubernetes Scheduler
-- **Pros**: Full control over scheduling decisions; supports advanced logic.
-- **Cons**: Requires running a secondary scheduler; needs robust integration and testing.
+- **Pros**: Full control over scheduling decisions, supports advanced logic.
+- **Cons**: Requires running a secondary scheduler, needs robust integration and testing.
 
 ### 3. DCM (Distributed Cloud Manager)-based Scheduling
-- **Pros**: Rich metadata support; policy-driven.
-- **Cons**: Additional complexity; may require integrating external systems.
+- **Pros**: metadata support, policy-driven.
+- **Cons**: Additional complexity, may require integrating external systems.
 
-## Status
-
-- Initial exploration completed with node labeling and pod-level affinity rules.
-- Future plans include parsing AS relationships from the SEED topology to auto-label nodes and generate topology-aware scheduling constraints programmatically from `Mesh.py`.
 
 ## Future Work
 
 - Automate node labeling based on AS partitioning.
 - Integrate scheduling preferences directly into manifest generation.
-- Prototype and benchmark a custom scheduler using Kubernetes' extender interface or a standalone pod scheduler service.
+- Prototype a custom scheduler using Kubernetes' extender interface or a standalone pod scheduler service.
